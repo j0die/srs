@@ -1,2 +1,2 @@
 #!/bin/sh
-docker build --rm -t jodie/srs .
+docker build --rm -t puppycodes/srs .

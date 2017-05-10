@@ -10,7 +10,7 @@ if [[ "$UID" -ne 0 ]]; then
 fi
 
 echo -n "=> Pulling Docker/Koken image (this may take a few minutes)..."
-docker pull jodie/srs > /dev/null
+docker pull jodie/srs
 echo "done."
 
 echo -n "=> Creating /data/koken/www and /data/koken/mysql for persistent storage..."
