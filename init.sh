@@ -9,11 +9,11 @@ if [[ "$UID" -ne 0 ]]; then
 	exit
 fi
 
-echo -n "=> Pulling Docker/Koken image (this may take a few minutes)..."
+echo -n "=> Pulling puppycodes/srs image..."
 docker pull puppycodes/srs
 echo "done."
 
-echo -n "=> Creating /data/koken/www and /data/koken/mysql for persistent storage..."
+echo -n "=> Creating /data/koken/www for persistent storage..."
 mkdir -p /data/koken/www
 mkdir -p /data/koken/mysql
 echo "done."

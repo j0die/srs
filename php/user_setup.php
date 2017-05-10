@@ -1,5 +1,5 @@
 <?php
-
+	define('LOOPBACK_HOST_HEADER', true);
 	define('FFMPEG_PATH', 'ffmpeg');
 
 	define('DARKROOM_MAGICK_THREADS', false);
