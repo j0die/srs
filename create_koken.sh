@@ -10,7 +10,7 @@ if [[ "$UID" -ne 0 ]]; then
 fi
 
 echo -n "=> Pulling Docker/Koken image (this may take a few minutes)..."
-docker pull jodie/srs
+docker pull puppycodes/srs
 echo "done."
 
 echo -n "=> Creating /data/koken/www and /data/koken/mysql for persistent storage..."
@@ -19,7 +19,7 @@ mkdir -p /data/koken/mysql
 echo "done."
 
 echo "=> Starting Docker container..."
-CID=$(docker run --restart=always -p 80:8080 -v /data/koken/www:/usr/share/nginx/www -v /data/koken/mysql:/var/lib/mysql -d jodie/srs /sbin/my_init)
+CID=$(docker run --restart=always -p 80:8080 -v /data/koken/www:/usr/share/nginx/www -v /data/koken/mysql:/var/lib/mysql -d puppycodes/srs /sbin/my_init)
 
 echo -n "=> Waiting for Koken to become available.."
 
