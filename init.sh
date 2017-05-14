@@ -4,7 +4,7 @@ echo ""
 
 # Root check
 if [[ "$UID" -ne 0 ]]; then
-	echo "!! This script requires root privileges. sudo ./create_koken.sh"
+	echo "!! This script requires root privileges"
 	echo ""
 	exit
 fi
