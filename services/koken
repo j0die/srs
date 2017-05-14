@@ -6,7 +6,7 @@ sv start nginx || exit 1
 
 if [ -f /usr/share/nginx/www/installer.php ]; then
   wget --quiet --no-cache --dns-timeout=10 -O /usr/share/nginx/www/core.zip https://s3.amazonaws.com/koken-installer/releases/latest.zip
-  wget --quiet --no-cache --dns-timeout=10 -O /usr/share/nginx/www/v1.0.zip https://github.com/j0die/srs-theme/archive/v1.0.1.zip
+  wget --quiet --no-cache --dns-timeout=10 -O /usr/share/nginx/www/v1.0.1.zip https://github.com/j0die/srs-theme/archive/v1.0.1.zip
 
   cd /usr/share/nginx/www;
   unzip core.zip;
