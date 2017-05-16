@@ -1,2 +1,2 @@
 #!/bin/sh
-docker build --rm -t puppycodes/srs .
+docker build -t puppycodes/srs . && docker push puppycodes/srs
