@@ -10,16 +10,11 @@ if [[ "$UID" -ne 0 ]]; then
 fi
 
 echo -n "=> Pulling puppycodes/srs image..."
-docker pull puppycodes/srs
-echo "done."
-
-echo -n "=> Creating /data/koken/www for persistent storage..."
-mkdir -p /data/koken/www
-mkdir -p /data/koken/mysql
+docker pull puppycodes/srs > /dev/null
 echo "done."
 
 echo "=> Starting Docker container..."
-CID=$(docker run --restart=always -p 80:8080 --name theme -v /Users/rye/repos/srs-theme:/usr/share/nginx/www/storage/themes/srs -d puppycodes/srs)
+CID=$(docker run --restart=always -p 80:8080 -v /Users/rye/repos/srs-theme:/usr/share/nginx/www/storage/themes/srs -d puppycodes/srs /sbin/my_init)
 
 echo -n "=> Waiting for Koken to become available.."
 
