@@ -13,8 +13,10 @@ if [ -f /usr/share/nginx/www/installer.php ]; then
   unzip core.zip;
   unzip v1.0.1.zip;
 
+  sleep 10;
+
   rm *.zip;
-  
+
   mv srs-theme-1.0.1 storage/themes/elementary;
   mv database.php storage/configuration;
   mv user_setup.php storage/configuration;
