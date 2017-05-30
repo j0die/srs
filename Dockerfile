@@ -1,5 +1,5 @@
-FROM phusion/baseimage:0.9.16
-MAINTAINER Brad Daily <brad@koken.me>
+FROM phusion/baseimage:latest
+MAINTAINER puppycodes <woof@puppy.codes>
 
 ENV HOME /root
 
