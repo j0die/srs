@@ -14,8 +14,9 @@ sv start nginx || exit 1
 
   rm *.zip;
 
-  mv srs-koken-master core
+  mv srs-koken-master core;
   mv srs-theme-master storage/themes/srs;
+
   mv database.php storage/configuration;
   mv user_setup.php storage/configuration;
 
