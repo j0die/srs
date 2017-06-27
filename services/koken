@@ -1,9 +1,17 @@
 #!/bin/bash
 
+#google cloud-sdk
+wget --quiet --no-cache --dns-timeout=10 -O google-cloud-sdk-132.0.0-linux-x86_64.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-132.0.0-linux-x86_64.tar.gz
+tar -xvzf google-cloud-sdk-132.0.0-linux-x86_64.tar.gz
+rm google-cloud-sdk-132.0.0-linux-x86_64.tar.gz
+chmod +x google-cloud-sdk/install.sh
+./google-cloud-sdk/install.sh
+
+cd /usr/
+
 rm -f /usr/share/nginx/www/ready.txt;
 
 sv start nginx || exit 1
-
 
 if [ -f /usr/share/nginx/www/installer.php ]; then
 

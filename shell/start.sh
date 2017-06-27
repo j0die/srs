@@ -5,14 +5,6 @@
 # installed yet                                         #
 #########################################################
 
-#google cloud-sdk
-wget --quiet --no-cache --dns-timeout=10 -O /usr/bin/google-cloud-sdk-132.0.0-linux-x86_64.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-132.0.0-linux-x86_64.tar.gz
-
-tar -xvzf /usr/bin/google-cloud-sdk-132.0.0-linux-x86_64.tar.gz;
-rm /usr/bin/google-cloud-sdk-132.0.0-linux-x86_64.tar.gz;
-
-exec /usr/bin/google-cloud-sdk/install.sh
-
 if [ ! -f /usr/share/nginx/www/storage/configuration/database.php ] && [ ! -f /usr/share/nginx/www/database.php ]; then
 
   if [ ! -f /var/lib/mysql/ibdata1 ]; then
