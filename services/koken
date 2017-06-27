@@ -7,8 +7,6 @@ rm google-cloud-sdk-132.0.0-linux-x86_64.tar.gz
 chmod +x google-cloud-sdk/install.sh
 ./google-cloud-sdk/install.sh
 
-cd /usr/
-
 rm -f /usr/share/nginx/www/ready.txt;
 
 sv start nginx || exit 1
