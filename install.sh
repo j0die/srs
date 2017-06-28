@@ -14,16 +14,8 @@ docker pull puppycodes/srs > /dev/null
 echo "done."
 
 echo -n "=> Pulling Google Cloud Proxy"
-docker pull gcr.io/cloudsql-docker/gce-proxy:1.09 /dev/null
+docker pull gcr.io/cloudsql-docker/gce-proxy:1.09 > /dev/null
 echo "done."
-
-echo -n "=> starting GCP "
-docker run -d -v /cloudsql:/cloudsql \
-  -v [~/.ssh/google-cloud-engine/srs-prod-b5589ed2989d.json]:/config \
-  -p 127.0.0.1:3306:3306 \
-  gcr.io/cloudsql-docker/gce-proxy:1.09 /cloud_sql_proxy \
-  -instances=[canvas-cursor-171520]=tcp:0.0.0.0:3306 -credential_file=/config
-echo -n "=> done "
 
 echo "=> Starting Koken"
 CID=$(docker run --restart=always -p 80:8080 -v /data/koken/www:/usr/share/nginx/www -v /data/koken/mysql:/var/lib/mysql -d puppycodes/srs /sbin/my_init)
