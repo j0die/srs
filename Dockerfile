@@ -42,11 +42,20 @@ RUN \
 # nginx site conf
 ADD ./conf/nginx-site.conf /etc/nginx/sites-available/default
 
+RUN curl -sSL https://sdk.cloud.google.com | bash
+RUN ln -s /root/google-cloud-sdk/bin/gcloud /bin/gcloud
+
+RUN wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64
+RUN mv cloud_sql_proxy.linux.amd64 cloud_sql_proxy
+RUN chmod +x cloud_sql_proxy
+RUN ln -s /root/cloud_sql_proxy /bin/cloud_sql_proxy
+
 # Add runit files for each service
 ADD ./services/nginx /etc/service/nginx/run
 ADD ./services/mysql /etc/service/mysql/run
 ADD ./services/php-fpm /etc/service/php-fpm/run
 ADD ./services/koken /etc/service/koken/run
+
 
 # Installation helpers
 ADD ./php/index.php /installer.php
@@ -79,13 +88,3 @@ RUN rm -rf /etc/service/sshd /etc/my_init.d/00_regen_ssh_host_keys.sh
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-RUN curl -sSL https://sdk.cloud.google.com | bash
-RUN ln -s /root/google-cloud-sdk/bin/gcloud /bin/gcloud
-
-
-RUN wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64
-RUN mv cloud_sql_proxy.linux.amd64 /bin/cloud_sql_proxy
-RUN chmod +x /bin/cloud_sql_proxy
-
-RUN cloud_sql_proxy -instances=canvas-cursor-171520=tcp:3306
