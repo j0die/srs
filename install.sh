@@ -13,12 +13,8 @@ echo -n "=> Pulling puppycodes/srs image..."
 docker pull puppycodes/srs > /dev/null
 echo "done."
 
-echo -n "=> Pulling Google Cloud Proxy"
-docker pull gcr.io/cloudsql-docker/gce-proxy:1.09 > /dev/null
-echo "done."
-
 echo "=> Starting Koken"
-CID=$(docker run --restart=always -p 80:8080 -v /data/koken/www:/usr/share/nginx/www -v /data/koken/mysql:/var/lib/mysql -d puppycodes/srs /sbin/my_init)
+CID=$(docker run --restart=always -p 8080:80 -v /data/koken/www:/usr/share/nginx/www -v /data/koken/mysql:/var/lib/mysql -d puppycodes/srs /sbin/my_init)
 
 echo -n "=> Waiting for Koken to become available.."
 
