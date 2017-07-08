@@ -14,7 +14,7 @@ docker pull puppycodes/srs > /dev/null
 echo "done."
 
 echo "=> Starting Koken"
-CID=$(docker run --restart=always -p 8080:80 -v /data/koken/www:/usr/share/nginx/www -v /data/koken/mysql:/var/lib/mysql -d puppycodes/srs /sbin/my_init)
+CID=$(docker run --restart=always -p 8080:80 -v /data/koken/www:/usr/share/nginx/www -d puppycodes/srs /sbin/my_init)
 
 echo -n "=> Waiting for Koken to become available.."
 
