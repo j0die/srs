@@ -1,5 +1,3 @@
 #!/bin/sh
-
 # exec /usr/sbin/mysqld --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib/mysql/plugin --user=mysql --log-error=/var/log/mysql/error.log --pid-file=/var/run/mysqld/mysqld.pid --socket=/var/run/mysqld/mysqld.sock --port=3306
-
-./cloud_sql_proxy -instances=srs-koken=tcp:3306
+mysql -u koken -p -h 104.198.6.137 --ssl-ca=server-ca.pem --ssl-cert=client-cert.pem --ssl-key=client-key.pem

@@ -11,17 +11,17 @@ if [ ! -f /usr/share/nginx/www/storage/configuration/database.php ] && [ ! -f /u
     mysql_install_db
   fi
 
-  # Start MySQL and wait for it to become available
-  mysql --host=127.0.0.1 --user=koken --password=prior-firewood-terrain-catcall-scrim-mote > /dev/null 2>&1 &
-
-  RET=1
-  while [[ $RET -ne 0 ]]; do
-      echo "=> Waiting for confirmation of MySQL service startup"
-      sleep 2
-      mysql -uroot -e "status" > /dev/null 2>&1
-      RET=$?
-  done
-
+  # # Start MySQL and wait for it to become available
+  # /usr/bin/mysqld_safe > /dev/null 2>&1 &
+  #
+  # RET=1
+  # while [[ $RET -ne 0 ]]; do
+  #     echo "=> Waiting for confirmation of MySQL service startup"
+  #     sleep 2
+  #     mysql -uroot -e "status" > /dev/null 2>&1
+  #     RET=$?
+  # done
+  #
   # # Generate Koken database and user credentials
   # echo "=> Generating database and credentials"
   # KOKEN_DB="koken"

@@ -2,7 +2,7 @@
 
 	$KOKEN_DATABASE = array(
 		'driver' => 'mysqli',
-		'hostname' => '104.198.6.137',
+		'hostname' => 'localhost',
 		'database' => 'koken',
 		'username' => 'koken',
 		'password' => 'prior-firewood-terrain-catcall-scrim-mote',

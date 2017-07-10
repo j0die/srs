@@ -42,14 +42,6 @@ RUN \
 # nginx site conf
 ADD ./conf/nginx-site.conf /etc/nginx/sites-available/default
 
-RUN curl -sSL https://sdk.cloud.google.com | bash
-RUN ln -s /root/google-cloud-sdk/bin/gcloud /bin/gcloud
-
-RUN wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64
-RUN mv cloud_sql_proxy.linux.amd64 cloud_sql_proxy
-RUN chmod +x cloud_sql_proxy
-RUN ln -s /root/cloud_sql_proxy /bin/cloud_sql_proxy
-
 # Add runit files for each service
 ADD ./services/nginx /etc/service/nginx/run
 ADD ./services/mysql /etc/service/mysql/run
