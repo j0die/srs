@@ -12,7 +12,7 @@ if [ ! -f /usr/share/nginx/www/storage/configuration/database.php ] && [ ! -f /u
   fi
 
   # Start MySQL and wait for it to become available
-  /usr/bin/mysqld_safe > /dev/null 2>&1 &
+  mysql --host=127.0.0.1 --user=koken --password=prior-firewood-terrain-catcall-scrim-mote > /dev/null 2>&1 &
 
   RET=1
   while [[ $RET -ne 0 ]]; do
@@ -22,17 +22,17 @@ if [ ! -f /usr/share/nginx/www/storage/configuration/database.php ] && [ ! -f /u
       RET=$?
   done
 
-  # Generate Koken database and user credentials
-  echo "=> Generating database and credentials"
-  KOKEN_DB="koken"
-  MYSQL_PASSWORD=`pwgen -c -n -1 12`
-  KOKEN_PASSWORD=`pwgen -c -n -1 12`
-
-  mysqladmin -u root password $MYSQL_PASSWORD
-  mysql -uroot -p$MYSQL_PASSWORD -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '$MYSQL_PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
-  mysql -uroot -p$MYSQL_PASSWORD -e "CREATE DATABASE koken; GRANT ALL PRIVILEGES ON koken.* TO 'koken'@'localhost' IDENTIFIED BY '$KOKEN_PASSWORD'; FLUSH PRIVILEGES;"
-
-  mysqladmin -uroot -p$MYSQL_PASSWORD shutdown
+  # # Generate Koken database and user credentials
+  # echo "=> Generating database and credentials"
+  # KOKEN_DB="koken"
+  # MYSQL_PASSWORD=`pwgen -c -n -1 12`
+  # KOKEN_PASSWORD=`pwgen -c -n -1 12`
+  #
+  # mysqladmin -u root password $MYSQL_PASSWORD
+  # mysql -uroot -p$MYSQL_PASSWORD -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '$MYSQL_PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+  # mysql -uroot -p$MYSQL_PASSWORD -e "CREATE DATABASE koken; GRANT ALL PRIVILEGES ON koken.* TO 'koken'@'localhost' IDENTIFIED BY '$KOKEN_PASSWORD'; FLUSH PRIVILEGES;"
+  #
+  # mysqladmin -uroot -p$MYSQL_PASSWORD shutdown
 
   echo "=> Setting up Koken"
   # Setup webroot
