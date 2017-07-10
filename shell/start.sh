@@ -12,7 +12,7 @@ if [ ! -f /usr/share/nginx/www/storage/configuration/database.php ] && [ ! -f /u
   fi
 
   # Start MySQL and wait for it to become available
-  mysql --host=127.0.0.1 --user=koken --password=prior-firewood-terrain-catcall-scrim-mote > /dev/null 2>&1 &
+  mysql --host=104.198.6.137 --user=koken --password=prior-firewood-terrain-catcall-scrim-mote > /dev/null 2>&1 &
 
   RET=1
   while [[ $RET -ne 0 ]]; do
